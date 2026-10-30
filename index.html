@@ -176,7 +176,7 @@
 <section id="demos" style="background:var(--bg2)">
   <div class="wrap">
     <h2>Demo Bots</h2>
-    <p class="sub">Pick a demo — the chat widget will switch to that bot so you can try it live.</p>
+    <p class="sub">Pick a sample bot below — the chat widget will switch to it so you can try it live.</p>
     <div class="demo-tabs">
       <button class="active" onclick="switchDemo('portfolio',this)">My Portfolio Bot</button>
       <button onclick="switchDemo('restaurant',this)">Restaurant Booking Bot</button>
@@ -295,22 +295,22 @@ const BOTS = {
     name: "Zohaib's Assistant",
     greeting: "Hi! I'm Zohaib's portfolio assistant 🤖 Ask me about his services, pricing, or process.",
     rules: [
-      {k:["price","pricing","cost","how much","charge","rate"], r:"Pricing is a placeholder for now: Starter bots from $[X], Business bots from $[Y]. The exact quote depends on features — use the contact form and Zohaib will reply within 24 hours."},
+      {k:["price","pricing","cost","how much","charge","rate"], r:"Starter bots from $[X], Business bots from $[Y]. The exact quote depends on your features — share your requirements in the contact form and Zohaib will reply within 24 hours."},
       {k:["service","offer","what do you","what can you","build"], r:"Zohaib builds: 1) Customer support bots 2) WhatsApp bots 3) Lead-generation bots 4) Website chat widgets. Which one are you interested in?"},
       {k:["whatsapp"], r:"Yes! WhatsApp bots are one of his specialties — booking, ordering, and support right inside WhatsApp."},
       {k:["time","long","duration","delivery"], r:"A typical bot takes 1–3 weeks from discovery call to launch, depending on complexity."},
-      {k:["who","about","zohaib","yourself"], r:"Zohaib is an AI chatbot developer. [Add your bio here — your background, tools you use, and experience.]"},
+      {k:["who","about","zohaib","yourself"], r:"Zohaib is an AI chatbot developer building smart assistants for websites and WhatsApp. [Add your background, tools, and experience here.]"},
       {k:["contact","email","phone","reach","talk","hire"], r:"You can reach Zohaib via the contact form below, or WhatsApp at [Your WhatsApp number]."},
       {k:["hi","hello","hey","salam","assalam"], r:"Hello! 👋 Great to meet you. Ask me about services, pricing, or how the process works."},
       {k:["thank","thanks","shukriya"], r:"You're welcome! Anything else you'd like to know?"}
     ],
-    fallback:"I'm a demo bot with limited answers 🙂 For anything else, use the contact form — Zohaib replies within 24 hours."
+    fallback:"I can help with questions about services, pricing, and the process. For anything else, use the contact form — Zohaib replies within 24 hours."
   },
   restaurant: {
     name:"Bella's Restaurant Bot",
     greeting:"Welcome to Bella's! 🍕 I can help you book a table, show the menu, or check opening hours.",
     rules:[
-      {k:["book","table","reservation","reserve"], r:"Great! How many guests, and for which date and time? (Demo — in a real bot this connects to your booking system.)"},
+      {k:["book","table","reservation","reserve"], r:"Great! How many guests, and for which date and time? I'll check availability for you right away."},
       {k:["menu"], r:"Today's specials: Margherita Pizza, Chicken Alfredo Pasta, and Chocolate Lava Cake. Full menu at [your menu link]."},
       {k:["hour","open","close","timing"], r:"We're open daily 12:00 PM – 11:00 PM."},
       {k:["deliver","delivery"], r:"Yes, we deliver within 5 km. Delivery takes about 30–40 minutes."},
@@ -324,7 +324,7 @@ const BOTS = {
     rules:[
       {k:["ship","delivery","arrive","dispatch"], r:"Orders ship within 24 hours and arrive in 2–4 working days. Shipping is free over $[X]."},
       {k:["return","refund","exchange"], r:"Easy 14-day returns — no questions asked. Just share your order number to start a return."},
-      {k:["track","order","status","where"], r:"Share your order number (e.g. TS-12345) and I'll check its status. (Demo — connects to your order system in production.)"},
+      {k:["track","order","status","where"], r:"Share your order number (e.g. TS-12345) and I'll check its status for you."},
       {k:["discount","offer","sale","coupon","deal"], r:"This week's deal: 15% off accessories with code BOT15 🎉"},
       {k:["hi","hello","hey","salam"], r:"Hey! 👋 Looking for product help, order tracking, or returns?"}
     ],
@@ -389,8 +389,8 @@ function switchDemo(key, btn){
   btn.classList.add("active");
   const info = {
     portfolio:["My Portfolio Bot","Ask about Zohaib's services, pricing, and process."],
-    restaurant:["Restaurant Booking Bot","A demo bot that takes table bookings and answers menu questions."],
-    store:["Online Store Bot","A demo support bot for orders, shipping, and returns."]
+    restaurant:["Restaurant Booking Bot","A sample bot that takes table bookings and answers menu questions."],
+    store:["Online Store Bot","A sample support bot for orders, shipping, and returns."]
   };
   document.getElementById("demo-title").textContent = info[key][0];
   document.getElementById("demo-desc").textContent = info[key][1];
