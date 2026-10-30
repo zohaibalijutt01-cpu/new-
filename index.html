@@ -295,8 +295,9 @@ const BOTS = {
     name: "Zohaib's Assistant",
     greeting: "Hi! I'm Zohaib's portfolio assistant 🤖 Ask me about his services, pricing, or process.",
     rules: [
-      {k:["price","pricing","cost","how much","charge","rate"], r:"Starter bots from $[X], Business bots from $[Y]. The exact quote depends on your features — share your requirements in the contact form and Zohaib will reply within 24 hours."},
-      {k:["service","offer","what do you","what can you","build"], r:"Zohaib builds: 1) Customer support bots 2) WhatsApp bots 3) Lead-generation bots 4) Website chat widgets. Which one are you interested in?"},
+      {k:["price","pricing","cost","how much","charge","rate","fee"], r:"Starter bots from $[X], Business bots from $[Y]. The exact quote depends on your features — share your requirements in the contact form and Zohaib will reply within 24 hours."},
+      {k:["service","services","offer","what do you","what can you","build"], r:"Zohaib builds: 1) Customer support bots 2) WhatsApp bots 3) Lead-generation bots 4) Website chat widgets. Which one are you interested in?"},
+      {k:["chatbot","chatbots","chat bot"], r:"A chatbot is an AI assistant that chats with your customers automatically — answering questions, taking bookings, and collecting leads 24/7. Zohaib builds them for websites and WhatsApp. Want to know the price or the process?"},
       {k:["whatsapp"], r:"Yes! WhatsApp bots are one of his specialties — booking, ordering, and support right inside WhatsApp."},
       {k:["time","long","duration","delivery"], r:"A typical bot takes 1–3 weeks from discovery call to launch, depending on complexity."},
       {k:["who","about","zohaib","yourself"], r:"Zohaib is an AI chatbot developer building smart assistants for websites and WhatsApp. [Add your background, tools, and experience here.]"},
@@ -304,31 +305,31 @@ const BOTS = {
       {k:["hi","hello","hey","salam","assalam"], r:"Hello! 👋 Great to meet you. Ask me about services, pricing, or how the process works."},
       {k:["thank","thanks","shukriya"], r:"You're welcome! Anything else you'd like to know?"}
     ],
-    fallback:"I can help with questions about services, pricing, and the process. For anything else, use the contact form — Zohaib replies within 24 hours."
+    fallbacks:["I can help with questions about services, pricing, and the process. For anything else, use the contact form — Zohaib replies within 24 hours.","Good question! I can answer things about services, pricing, and how the process works. For anything more specific, the contact form is the fastest way to reach Zohaib."]
   },
   restaurant: {
     name:"Bella's Restaurant Bot",
     greeting:"Welcome to Bella's! 🍕 I can help you book a table, show the menu, or check opening hours.",
     rules:[
-      {k:["book","table","reservation","reserve"], r:"Great! How many guests, and for which date and time? I'll check availability for you right away."},
+      {k:["book","booking","table","reservation","reserve"], r:"Great! How many guests, and for which date and time? I'll check availability for you right away."},
       {k:["menu"], r:"Today's specials: Margherita Pizza, Chicken Alfredo Pasta, and Chocolate Lava Cake. Full menu at [your menu link]."},
-      {k:["hour","open","close","timing"], r:"We're open daily 12:00 PM – 11:00 PM."},
+      {k:["hour","hours","open","close","timing"], r:"We're open daily 12:00 PM – 11:00 PM."},
       {k:["deliver","delivery"], r:"Yes, we deliver within 5 km. Delivery takes about 30–40 minutes."},
       {k:["hi","hello","hey","salam"], r:"Hello and welcome to Bella's! 🍽️ How can I help — booking, menu, or hours?"}
     ],
-    fallback:"I can help with bookings, the menu, hours, or delivery. What would you like?"
+    fallbacks:["I can help with bookings, the menu, hours, or delivery. What would you like?","Sure — I handle table bookings, menu questions, opening hours, and delivery info. What do you need?"]
   },
   store: {
     name:"TechStore Support Bot",
     greeting:"Hi, welcome to TechStore! 🛒 Ask me about products, orders, shipping, or returns.",
     rules:[
-      {k:["ship","delivery","arrive","dispatch"], r:"Orders ship within 24 hours and arrive in 2–4 working days. Shipping is free over $[X]."},
-      {k:["return","refund","exchange"], r:"Easy 14-day returns — no questions asked. Just share your order number to start a return."},
-      {k:["track","order","status","where"], r:"Share your order number (e.g. TS-12345) and I'll check its status for you."},
+      {k:["ship","shipping","deliver","delivery","arrive","dispatch"], r:"Orders ship within 24 hours and arrive in 2–4 working days. Shipping is free over $[X]."},
+      {k:["return","returns","refund","exchange"], r:"Easy 14-day returns — no questions asked. Just share your order number to start a return."},
+      {k:["track","tracking","order","status","where"], r:"Share your order number (e.g. TS-12345) and I'll check its status for you."},
       {k:["discount","offer","sale","coupon","deal"], r:"This week's deal: 15% off accessories with code BOT15 🎉"},
       {k:["hi","hello","hey","salam"], r:"Hey! 👋 Looking for product help, order tracking, or returns?"}
     ],
-    fallback:"I can help with products, shipping, returns, or order tracking. What's on your mind?"
+    fallbacks:["I can help with products, shipping, returns, or order tracking. What's on your mind?","Happy to help! Ask me about products, shipping times, returns, or tracking your order."]
   }
 };
 
@@ -348,13 +349,22 @@ function botReply(text){
   body.appendChild(t); body.scrollTop = body.scrollHeight;
   setTimeout(()=>{ t.remove(); addMsg(text,"bot"); }, 600 + Math.random()*500);
 }
+/* Fix common typos so small spelling mistakes still get the right answer */
+const TYPO_FIX = {"pice":"price","prise":"price","prce":"price","prize":"price","prices":"price","costt":"cost","costs":"cost","servise":"service","servises":"services","watsapp":"whatsapp","whatsap":"whatsapp","contct":"contact","contac":"contact","tim":"time","delivary":"delivery","deliveri":"delivery","ordr":"order","ordar":"order","shiping":"shipping","menue":"menu","bookin":"booking","tabil":"table","retrun":"return","refrund":"refund","chatbhot":"chatbot"};
+function normalize(s){
+  return s.toLowerCase().split(/[^a-z]+/).map(w=>TYPO_FIX[w]||w).join(" ");
+}
+const fallbackIdx = {portfolio:0, restaurant:0, store:0};
 function findAnswer(input){
   const bot = BOTS[currentPersona];
-  const s = input.toLowerCase();
+  const s = " " + normalize(input) + " ";
   for(const rule of bot.rules){
-    if(rule.k.some(k => s.includes(k))) return rule.r;
+    if(rule.k.some(k => k.includes(" ") ? s.includes(k) : s.includes(" " + k + " "))) return rule.r;
   }
-  return bot.fallback;
+  const fb = bot.fallbacks;
+  const i = fallbackIdx[currentPersona] % fb.length;
+  fallbackIdx[currentPersona]++;
+  return fb[i];
 }
 function sendChat(){
   const inp = document.getElementById("chat-text");
