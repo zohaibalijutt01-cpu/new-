@@ -3,114 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>aqib — AI Chatbot Developer</title>
-<meta name="description" content="Zohaib builds AI chatbots for websites, WhatsApp, and customer support. Try the live demo.">
+<title>Zohaib — AI Chatbot Developer</title>
+<meta name="description" content="Zohaib builds AI chatbots for websites and WhatsApp that resolve customer questions end-to-end.">
 <!--
-  PLACEHOLDER GUIDE — search this file for [brackets] to find everything to replace:
-  [Your Full Name], [Your tagline], [Your email], [Your WhatsApp number],
-  [X] pricing/stats, [Client Name], [Your photo URL]
+  PLACEHOLDER GUIDE — search this file for [brackets]:
+  [Your Full Name], [Your email], [Your WhatsApp number], [X] stats/prices,
+  [Client Name], [Your photo]
 -->
 <style>
   :root{
-    --bg:#0b0f1a; --bg2:#111827; --card:#151d30; --line:#243052;
-    --text:#e8edf7; --muted:#9aa6c4; --accent:#5b8cff; --accent2:#22d3ee;
-    --green:#34d399; --radius:16px;
+    --bg:#f6f4ed; --bg2:#ffffff; --ink:#131313; --muted:#5c5c5c;
+    --line:#e7e2d6; --lime:#d9f45c; --green:#0c3b2e; --green2:#12a56f;
+    --radius:20px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(11,15,26,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{font-weight:800;font-size:1.25rem;letter-spacing:.5px}
-  .logo span{color:var(--accent2)}
-  .navlinks{display:flex;gap:22px;font-size:.95rem;color:var(--muted)}
-  .navlinks a:hover{color:var(--text)}
-  .btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;font-weight:700;padding:12px 26px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-  /* HERO */
-  header.hero{padding:90px 0 70px;background:radial-gradient(900px 400px at 70% -10%,rgba(91,140,255,.25),transparent),radial-gradient(700px 380px at 15% 10%,rgba(34,211,238,.14),transparent)}
-  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-  .badge{display:inline-block;background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.35);padding:6px 14px;border-radius:999px;font-size:.82rem;margin-bottom:18px}
-  h1{font-size:2.9rem;line-height:1.15;margin-bottom:16px}
-  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.lead{color:var(--muted);font-size:1.12rem;margin-bottom:28px;max-width:520px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .bot-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-  .bot-card h3{font-size:1rem;margin-bottom:12px;color:var(--accent2)}
-  .mini-chat{background:var(--bg);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:.88rem}
-  .msg{max-width:85%;padding:9px 13px;border-radius:12px;line-height:1.45}
-  .msg.bot{background:#1c2742;align-self:flex-start;border-bottom-left-radius:4px}
-  .msg.user{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;font-weight:600;align-self:flex-end;border-bottom-right-radius:4px}
-  /* SECTIONS */
-  section{padding:70px 0}
-  section h2{font-size:2rem;margin-bottom:8px;text-align:center}
-  section .sub{color:var(--muted);text-align:center;max-width:640px;margin:0 auto 44px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,244,237,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.5px}
+  .logo i{font-style:normal;background:var(--ink);color:#fff;border-radius:8px;padding:2px 8px;margin-right:8px;font-size:1rem}
+  .navlinks{display:flex;gap:26px;font-size:.95rem;color:var(--muted)}
+  .navlinks a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--ink);color:#fff;font-weight:700;padding:13px 28px;border-radius:999px;border:0;cursor:pointer;font-size:.98rem;transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  .btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.small{padding:9px 20px;font-size:.88rem}
+  .nav-cta{display:flex;gap:10px}
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 60px;text-align:center;position:relative;overflow:hidden}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.08;letter-spacing:-2px;font-weight:800;max-width:900px;margin:0 auto 22px}
+  .hl{background:linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 96%, transparent 96%);padding:0 6px;white-space:nowrap}
+  .hero p.sub{color:var(--muted);font-size:1.15rem;max-width:640px;margin:0 auto 34px}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+  .micro{font-size:.82rem;color:var(--muted)}
+  .micro span{margin:0 8px}
+  /* hero visual: mock chat resolving a ticket */
+  .hero-visual{max-width:860px;margin:56px auto 0;background:var(--bg2);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.10);overflow:hidden;text-align:left}
+  .hv-head{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+  .dot{width:10px;height:10px;border-radius:50%;background:#e0dcd0}
+  .hv-body{padding:28px;display:flex;flex-direction:column;gap:14px}
+  .bubble{max-width:78%;padding:13px 18px;border-radius:16px;font-size:.95rem;line-height:1.5}
+  .bubble.user{background:#fdf3d8;border:1px solid #f0e2b0;align-self:flex-end;border-bottom-right-radius:6px}
+  .bubble.bot{background:#f1f0ea;align-self:flex-start;border-bottom-left-radius:6px}
+  .bubble .tagline{display:block;font-size:.75rem;color:var(--muted);margin-top:8px}
+  .bubble.action{background:#e9f9ef;border:1px solid #bfe8cd;align-self:flex-start;border-bottom-left-radius:6px}
+  .bubble.action b{color:var(--green)}
+  /* ---------- LOGOS ---------- */
+  .logos{padding:34px 0;text-align:center}
+  .logos p{font-size:.82rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+  .logo-row{display:flex;gap:44px;justify-content:center;flex-wrap:wrap;color:#b9b4a6;font-weight:800;font-size:1.15rem;letter-spacing:.5px}
+  /* ---------- STATS ---------- */
+  .stats{padding:30px 0 70px}
+  .stats .wrap{display:flex;gap:60px;justify-content:center;flex-wrap:wrap;text-align:center}
+  .stat .num{font-size:3rem;font-weight:800;letter-spacing:-1.5px}
+  .stat .lbl{color:var(--muted);font-size:.9rem}
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:84px 0}
+  .kicker{text-align:center;font-size:.82rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  h2{font-size:clamp(1.8rem,3.6vw,2.7rem);letter-spacing:-1.2px;line-height:1.15;font-weight:800;text-align:center;max-width:800px;margin:0 auto 18px}
+  h2 .hl2{background:linear-gradient(transparent 60%, var(--lime) 60%, var(--lime) 95%, transparent 95%);padding:0 4px}
+  .sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 52px;font-size:1.05rem}
+  .center{text-align:center}
+  /* ---------- CARDS ---------- */
   .grid{display:grid;gap:22px}
-  .grid.c4{grid-template-columns:repeat(4,1fr)}
-  .grid.c3{grid-template-columns:repeat(3,1fr)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .15s,border-color .15s}
-  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .card .icon{font-size:1.8rem;margin-bottom:12px}
-  .card h3{margin-bottom:10px;font-size:1.12rem}
-  .card p{color:var(--muted);font-size:.94rem}
-  .stat{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 10px}
-  .stat .num{font-size:2.1rem;font-weight:800;color:var(--accent2)}
-  .stat .lbl{color:var(--muted);font-size:.9rem;margin-top:6px}
-  /* DEMOS */
-  .demo-tabs{display:flex;gap:12px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
-  .demo-tabs button{background:var(--card);border:1px solid var(--line);color:var(--text);padding:11px 22px;border-radius:999px;cursor:pointer;font-size:.95rem}
-  .demo-tabs button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;font-weight:700;border:0}
-  .demo-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;max-width:720px;margin:0 auto}
-  .demo-panel h3{margin-bottom:8px}
-  .demo-panel p{color:var(--muted);margin-bottom:18px;font-size:.95rem}
-  /* STEPS */
-  .step{position:relative;padding-left:20px}
-  .step .n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;font-weight:800;margin-bottom:12px}
-  /* TESTIMONIALS */
-  .quote{font-style:italic;color:var(--text);margin-bottom:14px}
-  .who{color:var(--muted);font-size:.88rem}
-  /* PRICING */
-  .price{font-size:2.4rem;font-weight:800;margin:14px 0}
+  .c3{grid-template-columns:repeat(3,1fr)}
+  .c2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:32px;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.08)}
+  .card h3{font-size:1.15rem;margin-bottom:10px;letter-spacing:-.3px}
+  .card p{color:var(--muted);font-size:.95rem}
+  .card .big{font-size:2.6rem;font-weight:800;letter-spacing:-1.5px;margin:14px 0 6px}
+  .card .cap{font-size:.88rem;color:var(--muted)}
+  .card.dark{background:var(--green);color:#fff;border:0}
+  .card.dark p,.card.dark .cap{color:#cfe3d8}
+  .pill{display:inline-block;font-size:.75rem;font-weight:700;background:#f1efe6;border:1px solid var(--line);border-radius:999px;padding:5px 14px;margin-bottom:14px;color:var(--muted)}
+  /* ---------- STEPS ---------- */
+  .step{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:22px}
+  .step .n{font-size:.78rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+  .step h3{font-size:1.5rem;letter-spacing:-.6px;margin-bottom:10px}
+  .step p{color:var(--muted)}
+  .step .art{background:linear-gradient(135deg,#eef3df,#f7ecd2);border-radius:14px;min-height:190px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+  /* ---------- PRICING ---------- */
+  .price{font-size:2.6rem;font-weight:800;letter-spacing:-1.5px;margin:12px 0}
   .price small{font-size:1rem;color:var(--muted);font-weight:400}
-  .card ul{list-style:none;margin:16px 0 24px;display:flex;flex-direction:column;gap:9px;color:var(--muted);font-size:.94rem}
-  .card ul li::before{content:"✓ ";color:var(--green);font-weight:700}
-  .card.featured{border:2px solid var(--accent);position:relative}
-  .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;font-size:.75rem;font-weight:800;padding:4px 14px;border-radius:999px}
-  /* CONTACT */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
-  form{display:flex;flex-direction:column;gap:14px}
-  input,textarea{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 15px;color:var(--text);font-size:.95rem;font-family:inherit}
-  input:focus,textarea:focus{outline:none;border-color:var(--accent)}
-  .contact-info .row{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-bottom:14px}
-  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:.9rem}
-  /* CHAT WIDGET */
-  #chat-fab{position:fixed;bottom:24px;right:24px;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;cursor:pointer;font-size:1.7rem;box-shadow:0 10px 30px rgba(91,140,255,.45);z-index:100;display:flex;align-items:center;justify-content:center}
-  #chat-panel{position:fixed;bottom:100px;right:24px;width:360px;max-width:calc(100vw - 40px);height:500px;max-height:70vh;background:var(--bg2);border:1px solid var(--line);border-radius:18px;display:none;flex-direction:column;overflow:hidden;z-index:100;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  .card ul{list-style:none;margin:18px 0 26px;display:flex;flex-direction:column;gap:10px;color:var(--muted);font-size:.94rem}
+  .card ul li::before{content:"✓ ";color:var(--green2);font-weight:800}
+  .card.feat{border:2px solid var(--ink);position:relative}
+  .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:.72rem;font-weight:800;padding:5px 16px;border-radius:999px;letter-spacing:1px}
+  /* ---------- CTA ---------- */
+  .cta-band{background:var(--green);color:#fff;border-radius:28px;padding:70px 40px;text-align:center;position:relative;overflow:hidden}
+  .cta-band h2{color:#fff;max-width:700px}
+  .cta-band p{color:#cfe3d8;max-width:560px;margin:0 auto 34px}
+  .cta-band .btn{background:#fff;color:var(--ink)}
+  .cta-band .btn.light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;max-width:960px;margin:0 auto}
+  form{display:flex;flex-direction:column;gap:14px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+  input,textarea{border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.95rem;font-family:inherit;background:#fbfaf6;color:var(--ink)}
+  input:focus,textarea:focus{outline:none;border-color:var(--ink)}
+  .info-row{display:flex;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:14px}
+  .info-row .ic{font-size:1.3rem}
+  /* ---------- FOOTER ---------- */
+  footer{background:#111;color:#cfcfcf;padding:60px 0 30px;margin-top:40px}
+  footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+  footer h4{color:#fff;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+  footer a{display:block;color:#9a9a9a;font-size:.92rem;margin-bottom:10px}
+  footer a:hover{color:#fff}
+  .fine{grid-column:1/-1;border-top:1px solid #2a2a2a;padding-top:24px;font-size:.82rem;color:#777;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  /* ---------- CHAT WIDGET ---------- */
+  #chat-fab{position:fixed;bottom:24px;right:24px;width:62px;height:62px;border-radius:50%;background:var(--ink);color:#fff;border:0;cursor:pointer;font-size:1.7rem;box-shadow:0 12px 32px rgba(0,0,0,.28);z-index:100;display:flex;align-items:center;justify-content:center}
+  #chat-panel{position:fixed;bottom:100px;right:24px;width:370px;max-width:calc(100vw - 40px);height:520px;max-height:72vh;background:#fff;border:1px solid var(--line);border-radius:20px;display:none;flex-direction:column;overflow:hidden;z-index:100;box-shadow:0 28px 80px rgba(0,0,0,.22)}
   #chat-panel.open{display:flex}
-  #chat-head{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;padding:15px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-  #chat-head small{display:block;font-weight:400;font-size:.78rem;opacity:.85}
-  #chat-close{background:transparent;border:0;font-size:1.3rem;cursor:pointer;color:#04122e}
-  #chat-personas{display:flex;gap:6px;padding:10px 12px;background:var(--card);border-bottom:1px solid var(--line)}
-  #chat-personas button{flex:1;font-size:.72rem;padding:8px 4px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer}
-  #chat-personas button.active{color:#04122e;background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;font-weight:700}
-  #chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:.9rem}
-  #chat-body .msg{animation:pop .2s ease}
+  #chat-head{background:var(--ink);color:#fff;padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
+  #chat-head b{font-size:1rem}
+  #chat-head small{display:block;font-weight:400;font-size:.76rem;color:#bdbdbd}
+  #chat-close{background:transparent;border:0;font-size:1.25rem;cursor:pointer;color:#fff}
+  #chat-personas{display:flex;gap:6px;padding:10px 12px;background:#f4f2ec;border-bottom:1px solid var(--line)}
+  #chat-personas button{flex:1;font-size:.72rem;padding:9px 4px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:600}
+  #chat-personas button.active{color:#fff;background:var(--ink);border-color:var(--ink)}
+  #chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:.9rem;background:#fbfaf6}
+  .msg{max-width:85%;padding:10px 14px;border-radius:14px;line-height:1.5;animation:pop .2s ease;color:var(--ink)}
+  .msg.bot{background:#efede4;align-self:flex-start;border-bottom-left-radius:5px}
+  .msg.user{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
   @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .typing{color:var(--muted);font-style:italic;font-size:.82rem}
-  #chat-input{display:flex;border-top:1px solid var(--line)}
-  #chat-input input{flex:1;border:0;border-radius:0;background:var(--bg)}
-  #chat-input button{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04122e;border:0;padding:0 22px;font-weight:700;cursor:pointer}
-  @media(max-width:860px){
-    .hero-grid{grid-template-columns:1fr}
-    h1{font-size:2.1rem}
-    .grid.c4{grid-template-columns:repeat(2,1fr)}
-    .grid.c3{grid-template-columns:1fr}
+  #chat-input{display:flex;border-top:1px solid var(--line);background:#fff}
+  #chat-input input{flex:1;border:0;border-radius:0;background:#fff}
+  #chat-input button{background:var(--ink);color:#fff;border:0;padding:0 24px;font-weight:700;cursor:pointer}
+  @media(max-width:900px){
+    .c3{grid-template-columns:1fr}
+    .step{grid-template-columns:1fr}
     .contact-grid{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr}
     .navlinks{display:none}
+    .c2{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -118,162 +148,204 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">Zohaib<span>.bot</span></div>
+    <div class="logo"><i>Z</i>Zohaib</div>
     <div class="navlinks">
-      <a href="#services">Services</a><a href="#demos">Demos</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+      <a href="#services">Services</a><a href="#results">Results</a><a href="#how">How it works</a><a href="#pricing">Pricing</a>
     </div>
-    <button class="btn" onclick="openChat()">Try Live Demo</button>
+    <div class="nav-cta">
+      <button class="btn light small" onclick="openChat()">Chat live</button>
+      <a class="btn small" href="#contact" style="display:inline-flex;align-items:center">Get a quote</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="badge">● Available for new projects</div>
-      <h1>Hi, I'm <span class="grad">Zohaib</span>.<br>I build AI chatbots that talk like humans.</h1>
-      <p class="lead">[Your tagline — e.g. I help businesses answer customers 24/7 with smart chatbots for websites and WhatsApp.]</p>
-      <div class="hero-cta">
-        <button class="btn" onclick="openChat()">💬 Chat with my bot</button>
-        <a class="btn ghost" href="#demos">See demo bots</a>
-      </div>
+  <div class="wrap">
+    <h1>AI chatbots that <span class="hl">handle the tough questions.</span></h1>
+    <p class="sub">I'm Zohaib. I build AI assistants for websites and WhatsApp that resolve customer questions end-to-end — not just the easy ones. <span style="color:var(--ink);font-weight:600">[Your tagline here.]</span></p>
+    <div class="hero-cta">
+      <button class="btn" onclick="openChat()">Try the live bot →</button>
+      <a class="btn light" href="#demos">See sample bots</a>
     </div>
-    <div class="bot-card">
-      <h3>🔴 Live preview — this bot is real, try it</h3>
-      <div class="mini-chat">
-        <div class="msg bot">Hi! I'm Zohaib's assistant bot. Ask me about his chatbot services 👇</div>
-        <div class="msg user">What services do you offer?</div>
-        <div class="msg bot">Customer support bots, WhatsApp bots, lead-generation bots & website chat widgets. Tap the chat button to talk to me for real!</div>
+    <p class="micro"><span>✓ Replies instantly</span><span>✓ No sign-up needed</span><span>✓ Real working demo</span></p>
+
+    <div class="hero-visual">
+      <div class="hv-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">Live chat — Zohaib's Assistant</span></div>
+      <div class="hv-body">
+        <div class="bubble user">Do you build WhatsApp bots?<span class="tagline">Visitor · just now</span></div>
+        <div class="bubble bot">Yes! WhatsApp bots for booking, ordering, and support — right inside WhatsApp, where your customers already are.</div>
+        <div class="bubble user">And how much does a simple one cost?</div>
+        <div class="bubble action"><b>✓ Answered instantly</b> — no human agent needed.<span class="tagline">This is a real bot running on this page. Try it yourself ↓</span></div>
       </div>
     </div>
   </div>
 </header>
 
-<section id="services">
+<div class="logos">
   <div class="wrap">
-    <h2>What I Build</h2>
-    <p class="sub">AI chatbots designed around your business — not generic templates.</p>
-    <div class="grid c4">
-      <div class="card"><div class="icon">🎧</div><h3>Customer Support Bots</h3><p>Answer FAQs, track orders, and resolve common issues automatically — 24/7, in any language.</p></div>
-      <div class="card"><div class="icon">💚</div><h3>WhatsApp Bots</h3><p>Meet customers where they already are. Booking, ordering, and support right inside WhatsApp.</p></div>
-      <div class="card"><div class="icon">🎯</div><h3>Lead Generation Bots</h3><p>Qualify visitors, collect contact details, and book calls while you sleep.</p></div>
-      <div class="card"><div class="icon">🌐</div><h3>Website Chat Widgets</h3><p>A smart assistant embedded on your site — like the one on this page. Try it!</p></div>
+    <p>Built for businesses like</p>
+    <div class="logo-row">
+      <span>[Client]</span><span>[Client]</span><span>[Client]</span><span>[Client]</span><span>[Client]</span>
     </div>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">[X]+</div><div class="lbl">AI bots built</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="lbl">Always online</div></div>
+    <div class="stat"><div class="num">&lt;2s</div><div class="lbl">Average reply time</div></div>
+    <div class="stat"><div class="num">[X]%</div><div class="lbl">Questions resolved without a human</div></div>
   </div>
 </section>
 
-<section id="stats" style="padding-top:0">
+<section class="block" id="services" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div class="grid c4">
-      <!-- PLACEHOLDER: replace with your real numbers -->
-      <div class="stat"><div class="num">[X]+</div><div class="lbl">Bots delivered</div></div>
-      <div class="stat"><div class="num">24/7</div><div class="lbl">Always online</div></div>
-      <div class="stat"><div class="num">&lt;2s</div><div class="lbl">Avg. response time</div></div>
-      <div class="stat"><div class="num">[X]%</div><div class="lbl">Queries resolved automatically</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="demos" style="background:var(--bg2)">
-  <div class="wrap">
-    <h2>Demo Bots</h2>
-    <p class="sub">Pick a sample bot below — the chat widget will switch to it so you can try it live.</p>
-    <div class="demo-tabs">
-      <button class="active" onclick="switchDemo('portfolio',this)">My Portfolio Bot</button>
-      <button onclick="switchDemo('restaurant',this)">Restaurant Booking Bot</button>
-      <button onclick="switchDemo('store',this)">Online Store Bot</button>
-    </div>
-    <div class="demo-panel">
-      <h3 id="demo-title">My Portfolio Bot</h3>
-      <p id="demo-desc">Ask about Zohaib's services, pricing, and process.</p>
-      <button class="btn" onclick="openChat()">Open this demo in chat</button>
-    </div>
-  </div>
-</section>
-
-<section id="process">
-  <div class="wrap">
-    <h2>How It Works</h2>
-    <p class="sub">From first call to live bot in four simple steps.</p>
-    <div class="grid c4">
-      <div class="card step"><div class="n">1</div><h3>Discovery</h3><p>We map your FAQs, goals, and where the bot will live (website, WhatsApp, etc.).</p></div>
-      <div class="card step"><div class="n">2</div><h3>Build</h3><p>I design the conversation flows and connect your data, products, or booking system.</p></div>
-      <div class="card step"><div class="n">3</div><h3>Train & Test</h3><p>The bot is trained on your content and tested against real customer questions.</p></div>
-      <div class="card step"><div class="n">4</div><h3>Launch & Improve</h3><p>Goes live on your channels, then keeps getting smarter from real chats.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials" style="background:var(--bg2)">
-  <div class="wrap">
-    <h2>Client Feedback</h2>
-    <p class="sub">[Replace these with real client reviews.]</p>
+    <div class="kicker">Services</div>
+    <h2>Most chatbots fall apart when a question gets <span class="hl2">complicated.</span></h2>
+    <p class="sub">Mine are built to resolve the tough ones — and hand off to a human gracefully when they can't.</p>
     <div class="grid c3">
-      <div class="card"><p class="quote">"[Your client review here — e.g. The bot handles 80% of our support tickets now.]"</p><p class="who">— [Client Name], [Business]</p></div>
-      <div class="card"><p class="quote">"[Your client review here.]"</p><p class="who">— [Client Name], [Business]</p></div>
-      <div class="card"><p class="quote">"[Your client review here.]"</p><p class="who">— [Client Name], [Business]</p></div>
+      <div class="card"><span class="pill">Websites</span><h3>Website AI Assistants</h3><p>A smart chat widget on your site that answers product questions, captures leads, and books calls — like the one on this page.</p></div>
+      <div class="card"><span class="pill">WhatsApp</span><h3>WhatsApp Bots</h3><p>Booking, ordering, and customer support inside WhatsApp. Your customers never need to download anything.</p></div>
+      <div class="card"><span class="pill">Support</span><h3>Customer Support Bots</h3><p>Trained on your FAQs, policies, and order system. Resolves tickets end-to-end, 24/7, in any language.</p></div>
+      <div class="card"><span class="pill">Sales</span><h3>Lead Generation Bots</h3><p>Qualify visitors with smart questions, collect contact details, and book sales calls while you sleep.</p></div>
+      <div class="card"><span class="pill">Stores</span><h3>E-commerce Assistants</h3><p>Order tracking, shipping info, returns, and product recommendations — without touching your support inbox.</p></div>
+      <div class="card"><span class="pill">Custom</span><h3>Custom AI Workflows</h3><p>Multi-step flows, CRM integrations, and AI trained on your own data. If you can describe it, I can build it.</p></div>
     </div>
   </div>
 </section>
 
-<section id="pricing">
+<section class="block" id="results">
   <div class="wrap">
-    <h2>Pricing</h2>
+    <div class="kicker">Results</div>
+    <h2>Real results, from <span class="hl2">real clients.</span></h2>
+    <p class="sub">[Replace these cards with your real client results.]</p>
+    <div class="grid c3">
+      <div class="card"><span class="pill">[Industry]</span><div class="big">[X]%</div><p class="cap">of support questions resolved without a human, within [X] weeks</p><p style="margin-top:14px;font-weight:700">[Client Name]</p></div>
+      <div class="card dark"><span class="pill" style="background:rgba(255,255,255,.14);border-color:transparent;color:#fff">[Industry]</span><div class="big">[X]x</div><p class="cap">more qualified leads captured after adding a lead bot</p><p style="margin-top:14px;font-weight:700">[Client Name]</p></div>
+      <div class="card"><span class="pill">[Industry]</span><div class="big">[X]%</div><p class="cap">fewer repetitive tickets reaching the support team</p><p style="margin-top:14px;font-weight:700">[Client Name]</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Process</div>
+    <h2>Your team never answers the <span class="hl2">same question twice.</span></h2>
+    <p class="sub">From first call to live bot in four steps.</p>
+    <div class="step">
+      <div><div class="n">Step 1</div><h3>AI handles the chat</h3><p>We map your FAQs and goals. The bot starts resolving questions on day one — on your website, WhatsApp, or both.</p></div>
+      <div class="art">💬</div>
+    </div>
+    <div class="step">
+      <div><div class="n">Step 2</div><h3>Smooth handoff to a human when needed</h3><p>When the bot can't resolve something, it passes the full conversation history to you — no cold handoffs, no repeated questions.</p></div>
+      <div class="art">🤝</div>
+    </div>
+    <div class="step">
+      <div><div class="n">Step 3</div><h3>The bot keeps learning</h3><p>Every conversation makes it smarter. New questions become new answers — automatically.</p></div>
+      <div class="art">📈</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="demos">
+  <div class="wrap">
+    <div class="kicker">Live samples</div>
+    <h2>Don't take my word for it. <span class="hl2">Talk to the bots.</span></h2>
+    <p class="sub">Pick a sample below — the chat widget will switch to it so you can try it live.</p>
+    <div class="center" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="btn small" onclick="switchDemo('portfolio',null);openChat()">My assistant</button>
+      <button class="btn light small" onclick="switchDemo('restaurant',null);openChat()">Restaurant bot</button>
+      <button class="btn light small" onclick="switchDemo('store',null);openChat()">Store bot</button>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pricing" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Pricing</div>
+    <h2>Simple pricing. <span class="hl2">No surprises.</span></h2>
     <p class="sub">[Replace with your real packages and prices.]</p>
     <div class="grid c3">
       <div class="card">
         <h3>Starter</h3>
         <div class="price">$[X]<small> / project</small></div>
         <ul><li>Website chat widget</li><li>Up to 20 FAQs</li><li>1 revision round</li><li>Email support</li></ul>
-        <a class="btn ghost" href="#contact" style="display:block;text-align:center">Get Started</a>
+        <a class="btn light" href="#contact" style="display:block;text-align:center">Get started</a>
       </div>
-      <div class="card featured">
-        <div class="tag">MOST POPULAR</div>
+      <div class="card feat">
+        <div class="flag">MOST POPULAR</div>
         <h3>Business</h3>
         <div class="price">$[X]<small> / project</small></div>
-        <ul><li>Website + WhatsApp bot</li><li>Up to 100 FAQs</li><li>CRM / order integration</li><li>3 revision rounds</li><li>Priority support</li></ul>
-        <a class="btn" href="#contact" style="display:block;text-align:center">Get Started</a>
+        <ul><li>Website + WhatsApp bot</li><li>Up to 100 FAQs</li><li>Order / CRM integration</li><li>3 revision rounds</li><li>Priority support</li></ul>
+        <a class="btn" href="#contact" style="display:block;text-align:center">Get started</a>
       </div>
       <div class="card">
         <h3>Custom</h3>
         <div class="price">Let's talk</div>
         <ul><li>Multi-channel bots</li><li>Custom AI training</li><li>API & system integrations</li><li>Dedicated support</li></ul>
-        <a class="btn ghost" href="#contact" style="display:block;text-align:center">Contact Me</a>
+        <a class="btn light" href="#contact" style="display:block;text-align:center">Contact me</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact" style="background:var(--bg2)">
+<section class="block" id="contact">
   <div class="wrap">
-    <h2>Let's Build Your Bot</h2>
-    <p class="sub">Tell me about your project — I usually reply within 24 hours.</p>
-    <div class="contact-grid">
-      <form onsubmit="return sendMail(event)">
-        <input id="f-name" type="text" placeholder="Your name" required>
-        <input id="f-email" type="email" placeholder="Your email" required>
-        <textarea id="f-msg" rows="5" placeholder="What kind of chatbot do you need?" required></textarea>
-        <button class="btn" type="submit">Send Message</button>
-      </form>
-      <div class="contact-info">
-        <!-- PLACEHOLDER: put your real contact details -->
-        <div class="row"><span>📧</span><span>[Your email]</span></div>
-        <div class="row"><span>💬</span><span>WhatsApp: [Your WhatsApp number]</span></div>
-        <div class="row"><span>📍</span><span>[Your city, country]</span></div>
-        <div class="row"><span>🕒</span><span>Available: [Your working hours]</span></div>
+    <div class="cta-band">
+      <h2>Built to handle the tough questions.</h2>
+      <p>Bring me the questions your current setup can't answer. I'll show you a bot resolving them.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" onclick="openChat()">Chat with my bot →</button>
+        <a class="btn light" href="#contact-form">Get a quote</a>
+      </div>
+    </div>
+
+    <div id="contact-form" style="margin-top:60px">
+      <h2>Let's build your bot</h2>
+      <p class="sub">Tell me about your project — I usually reply within 24 hours.</p>
+      <div class="contact-grid">
+        <form onsubmit="return sendMail(event)">
+          <input id="f-name" type="text" placeholder="Your name" required>
+          <input id="f-email" type="email" placeholder="Your email" required>
+          <textarea id="f-msg" rows="5" placeholder="What kind of chatbot do you need?" required></textarea>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+        <div>
+          <!-- PLACEHOLDER: put your real contact details -->
+          <div class="info-row"><span class="ic">📧</span><span>[Your email]</span></div>
+          <div class="info-row"><span class="ic">💬</span><span>WhatsApp: [Your WhatsApp number]</span></div>
+          <div class="info-row"><span class="ic">📍</span><span>[Your city, country]</span></div>
+          <div class="info-row"><span class="ic">🕒</span><span>Available: [Your working hours]</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Zohaib — AI Chatbot Developer. Built with 🤖 and hosted on GitHub Pages.</div>
+  <div class="wrap">
+    <div>
+      <div class="logo" style="color:#fff;margin-bottom:14px"><i>Z</i>Zohaib</div>
+      <p style="font-size:.9rem;max-width:280px">AI chatbots for websites and WhatsApp that resolve customer questions end-to-end.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <a href="#services">Services</a><a href="#results">Results</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="#contact-form">[Your email]</a><a href="#contact-form">[WhatsApp]</a><a href="#contact-form">[LinkedIn]</a>
+    </div>
+    <div class="fine"><span>© 2026 Zohaib — AI Chatbot Developer</span><span>Hosted on Vercel</span></div>
+  </div>
 </footer>
 
 <!-- ============ FLOATING CHAT WIDGET ============ -->
 <button id="chat-fab" onclick="toggleChat()" title="Chat with the bot">💬</button>
 <div id="chat-panel">
   <div id="chat-head">
-    <div><span id="chat-bot-name">Zohaib's Assistant</span><small id="chat-bot-status">● Online — replies instantly</small></div>
+    <div><b id="chat-bot-name">Zohaib's Assistant</b><small>● Online — replies instantly</small></div>
     <button id="chat-close" onclick="toggleChat()">✕</button>
   </div>
   <div id="chat-personas">
@@ -289,66 +361,50 @@
 </div>
 
 <script>
-/* ================= BOT BRAIN (demo, rule-based) ================= */
+/* ================= BOT BRAIN ================= */
 const BOTS = {
   portfolio: {
     name: "Zohaib's Assistant",
-    greeting: "Hi! I'm Zohaib's portfolio assistant 🤖 Ask me about his services, pricing, or process.",
+    greeting: "Hi! I'm Zohaib's assistant. Ask me about his chatbot services, pricing, or process.",
     rules: [
       {k:["price","pricing","cost","how much","charge","rate","fee"], r:"Starter bots from $[X], Business bots from $[Y]. The exact quote depends on your features — share your requirements in the contact form and Zohaib will reply within 24 hours."},
       {k:["service","services","offer","what do you","what can you","build"], r:"Zohaib builds: 1) Customer support bots 2) WhatsApp bots 3) Lead-generation bots 4) Website chat widgets. Which one are you interested in?"},
       {k:["chatbot","chatbots","chat bot"], r:"A chatbot is an AI assistant that chats with your customers automatically — answering questions, taking bookings, and collecting leads 24/7. Zohaib builds them for websites and WhatsApp. Want to know the price or the process?"},
       {k:["whatsapp"], r:"Yes! WhatsApp bots are one of his specialties — booking, ordering, and support right inside WhatsApp."},
-      {k:["time","long","duration","delivery"], r:"A typical bot takes 1–3 weeks from discovery call to launch, depending on complexity."},
+      {k:["time","long","duration","delivery"], r:"A typical bot takes 1–3 weeks from first call to launch, depending on complexity."},
       {k:["who","about","zohaib","yourself"], r:"Zohaib is an AI chatbot developer building smart assistants for websites and WhatsApp. [Add your background, tools, and experience here.]"},
       {k:["contact","email","phone","reach","talk","hire"], r:"You can reach Zohaib via the contact form below, or WhatsApp at [Your WhatsApp number]."},
-      {k:["hi","hello","hey","salam","assalam"], r:"Hello! 👋 Great to meet you. Ask me about services, pricing, or how the process works."},
+      {k:["hi","hello","hey","salam","assalam"], r:"Hello! Great to meet you. Ask me about services, pricing, or how the process works."},
       {k:["thank","thanks","shukriya"], r:"You're welcome! Anything else you'd like to know?"}
     ],
     fallbacks:["I can help with questions about services, pricing, and the process. For anything else, use the contact form — Zohaib replies within 24 hours.","Good question! I can answer things about services, pricing, and how the process works. For anything more specific, the contact form is the fastest way to reach Zohaib."]
   },
   restaurant: {
     name:"Bella's Restaurant Bot",
-    greeting:"Welcome to Bella's! 🍕 I can help you book a table, show the menu, or check opening hours.",
+    greeting:"Welcome to Bella's! I can help you book a table, show the menu, or check opening hours.",
     rules:[
       {k:["book","booking","table","reservation","reserve"], r:"Great! How many guests, and for which date and time? I'll check availability for you right away."},
       {k:["menu"], r:"Today's specials: Margherita Pizza, Chicken Alfredo Pasta, and Chocolate Lava Cake. Full menu at [your menu link]."},
       {k:["hour","hours","open","close","timing"], r:"We're open daily 12:00 PM – 11:00 PM."},
       {k:["deliver","delivery"], r:"Yes, we deliver within 5 km. Delivery takes about 30–40 minutes."},
-      {k:["hi","hello","hey","salam"], r:"Hello and welcome to Bella's! 🍽️ How can I help — booking, menu, or hours?"}
+      {k:["hi","hello","hey","salam"], r:"Hello and welcome to Bella's! How can I help — booking, menu, or hours?"}
     ],
     fallbacks:["I can help with bookings, the menu, hours, or delivery. What would you like?","Sure — I handle table bookings, menu questions, opening hours, and delivery info. What do you need?"]
   },
   store: {
     name:"TechStore Support Bot",
-    greeting:"Hi, welcome to TechStore! 🛒 Ask me about products, orders, shipping, or returns.",
+    greeting:"Hi, welcome to TechStore! Ask me about products, orders, shipping, or returns.",
     rules:[
       {k:["ship","shipping","deliver","delivery","arrive","dispatch"], r:"Orders ship within 24 hours and arrive in 2–4 working days. Shipping is free over $[X]."},
       {k:["return","returns","refund","exchange"], r:"Easy 14-day returns — no questions asked. Just share your order number to start a return."},
       {k:["track","tracking","order","status","where"], r:"Share your order number (e.g. TS-12345) and I'll check its status for you."},
-      {k:["discount","offer","sale","coupon","deal"], r:"This week's deal: 15% off accessories with code BOT15 🎉"},
-      {k:["hi","hello","hey","salam"], r:"Hey! 👋 Looking for product help, order tracking, or returns?"}
+      {k:["discount","offer","sale","coupon","deal"], r:"This week's deal: 15% off accessories with code BOT15."},
+      {k:["hi","hello","hey","salam"], r:"Hey! Looking for product help, order tracking, or returns?"}
     ],
     fallbacks:["I can help with products, shipping, returns, or order tracking. What's on your mind?","Happy to help! Ask me about products, shipping times, returns, or tracking your order."]
   }
 };
 
-let currentPersona = "portfolio";
-const body = document.getElementById("chat-body");
-
-function addMsg(text, who){
-  const d = document.createElement("div");
-  d.className = "msg " + who;
-  d.textContent = text;
-  body.appendChild(d);
-  body.scrollTop = body.scrollHeight;
-}
-function botReply(text){
-  const t = document.createElement("div");
-  t.className = "typing"; t.textContent = "typing…";
-  body.appendChild(t); body.scrollTop = body.scrollHeight;
-  setTimeout(()=>{ t.remove(); addMsg(text,"bot"); }, 600 + Math.random()*500);
-}
 /* Fix common typos so small spelling mistakes still get the right answer */
 const TYPO_FIX = {"pice":"price","prise":"price","prce":"price","prize":"price","prices":"price","costt":"cost","costs":"cost","servise":"service","servises":"services","watsapp":"whatsapp","whatsap":"whatsapp","contct":"contact","contac":"contact","tim":"time","delivary":"delivery","deliveri":"delivery","ordr":"order","ordar":"order","shiping":"shipping","menue":"menu","bookin":"booking","tabil":"table","retrun":"return","refrund":"refund","chatbhot":"chatbot"};
 function normalize(s){
@@ -365,6 +421,23 @@ function findAnswer(input){
   const i = fallbackIdx[currentPersona] % fb.length;
   fallbackIdx[currentPersona]++;
   return fb[i];
+}
+
+let currentPersona = "portfolio";
+const body = document.getElementById("chat-body");
+
+function addMsg(text, who){
+  const d = document.createElement("div");
+  d.className = "msg " + who;
+  d.textContent = text;
+  body.appendChild(d);
+  body.scrollTop = body.scrollHeight;
+}
+function botReply(text){
+  const t = document.createElement("div");
+  t.className = "typing"; t.textContent = "typing…";
+  body.appendChild(t); body.scrollTop = body.scrollHeight;
+  setTimeout(()=>{ t.remove(); addMsg(text,"bot"); }, 600 + Math.random()*500);
 }
 function sendChat(){
   const inp = document.getElementById("chat-text");
@@ -392,23 +465,15 @@ function toggleChat(){
 function openChat(){
   const p = document.getElementById("chat-panel");
   if(!p.classList.contains("open")) toggleChat();
-  p.scrollIntoView({block:"nearest"});
 }
 function switchDemo(key, btn){
-  document.querySelectorAll(".demo-tabs button").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  const info = {
-    portfolio:["My Portfolio Bot","Ask about Zohaib's services, pricing, and process."],
-    restaurant:["Restaurant Booking Bot","A sample bot that takes table bookings and answers menu questions."],
-    store:["Online Store Bot","A sample support bot for orders, shipping, and returns."]
-  };
-  document.getElementById("demo-title").textContent = info[key][0];
-  document.getElementById("demo-desc").textContent = info[key][1];
   const tabBtns = document.querySelectorAll("#chat-personas button");
   const idx = {portfolio:0, restaurant:1, store:2}[key];
   setPersona(key, tabBtns[idx]);
+  if(btn){
+    document.querySelectorAll("#demos .btn").forEach(b=>{b.classList.remove("btn");b.classList.add("btn","light");});
+  }
 }
-/* Contact form -> opens email draft (replace address) */
 function sendMail(e){
   e.preventDefault();
   const n = document.getElementById("f-name").value;
