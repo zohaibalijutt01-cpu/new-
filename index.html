@@ -233,7 +233,7 @@ header{position:sticky;z-index:20}
 .trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .trailer-fallback a{color:#7db9ff}
 #trailerTitle{font-size:15px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tmdb-trailer{display:block;text-align:center;text-decoration:none;border:1px solid rgba(22,139,255,.55);color:#9dc4ff;border-radius:999px;padding:8px 7px;font-size:11px;font-weight:800;margin-top:7px;transition:background .2s}
+.tmdb-trailer{display:block;width:100%;text-align:center;text-decoration:none;border:1px solid rgba(22,139,255,.55);color:#9dc4ff;border-radius:999px;padding:8px 7px;font-size:11px;font-weight:800;margin-top:7px;transition:background .2s;background:transparent;font-family:inherit;cursor:pointer}
 .tmdb-trailer:hover{background:rgba(22,139,255,.22);color:#fff}
 
 </style>
@@ -571,7 +571,7 @@ function renderTmdbResults(items){
     const heading=document.createElement("h3");heading.textContent=title;
     const meta=document.createElement("p");meta.className="tmdb-meta";meta.textContent=type+(year?" · "+year:"");
     const link=document.createElement("a");link.className="tmdb-access";link.target="_blank";link.rel="noopener noreferrer";link.href=tmdbWhatsApp(title,type,year);link.textContent="Give Access";
-    const tlink=document.createElement("a");tlink.className="tmdb-trailer";tlink.target="_blank";tlink.rel="noopener noreferrer";tlink.href=trailerUrl(title);tlink.textContent="▶ Trailer";
+    const tlink=document.createElement("button");tlink.className="tmdb-trailer";tlink.type="button";tlink.textContent="\u25B6 Trailer";tlink.addEventListener("click",function(){playTmdbTrailer(item.id,item.media_type,title,tlink);});
     info.append(heading,meta,link,tlink);card.append(img,info);tmdbResults.append(card);
   });
   tmdbStatus.textContent=valid.length+" matching poster(s) found. Select Give Access to contact FILEX TV.";
@@ -688,6 +688,20 @@ tmdbForm.addEventListener("submit", async (event)=>{
 
 
 /* ================= TRAILER PLAYER ================= */
+async function playTmdbTrailer(tmdbId,mediaType,title,btn){
+  var kind=mediaType==="tv"?"tv":"movie";
+  var orig=btn.textContent;btn.textContent="\u23F3 Loading\u2026";btn.disabled=true;
+  try{
+    var url="https://api.themoviedb.org/3/"+kind+"/"+tmdbId+"/videos?api_key="+encodeURIComponent(TMDB_API_KEY)+"&language=en-US";
+    var res=await fetch(url);if(!res.ok)throw new Error("videos "+res.status);
+    var data=await res.json();
+    var vids=(data.results||[]).filter(function(v){return v.site==="YouTube"&&v.key;});
+    var trailer=vids.find(function(v){return v.type==="Trailer";})||vids[0];
+    if(trailer){openTrailer(trailer.key,title);}
+    else{window.open(trailerUrl(title),"_blank");}
+  }catch(e){window.open(trailerUrl(title),"_blank");}
+  btn.textContent=orig;btn.disabled=false;
+}
 function openTrailer(videoId,title){
   var modal=document.getElementById('trailerModal');
   document.getElementById('trailerTitle').textContent=title+' — Trailer';
