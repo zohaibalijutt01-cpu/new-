@@ -226,6 +226,16 @@ header{position:sticky;z-index:20}
 @media(max-width:900px){.feat-grid,.testi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.feat-grid,.testi-grid{grid-template-columns:1fr}.reseller-band{padding:26px 20px}}
 
+
+/* ============ TRAILER FEATURE ============ */
+.trailer-btn{position:absolute;top:10px;right:10px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(22,139,255,.7);background:rgba(2,8,24,.82);color:#fff;font-size:15px;cursor:pointer;backdrop-filter:blur(6px);transition:transform .2s,background .2s;display:flex;align-items:center;justify-content:center}
+.trailer-btn:hover{transform:scale(1.14);background:#155fe8}
+.trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.trailer-fallback a{color:#7db9ff}
+#trailerTitle{font-size:15px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tmdb-trailer{display:block;text-align:center;text-decoration:none;border:1px solid rgba(22,139,255,.55);color:#9dc4ff;border-radius:999px;padding:8px 7px;font-size:11px;font-weight:800;margin-top:7px;transition:background .2s}
+.tmdb-trailer:hover{background:rgba(22,139,255,.22);color:#fff}
+
 </style>
 </head>
 <body>
@@ -376,6 +386,14 @@ header{position:sticky;z-index:20}
     <button id="chatSend" aria-label="Send">➤</button>
   </div>
 </div>
+
+<div class="trailer-modal" id="trailerModal" role="dialog" aria-modal="true" aria-label="Trailer player">
+  <div class="trailer-dialog">
+    <div class="trailer-top"><b id="trailerTitle">Trailer</b><button class="trailer-close" id="trailerClose" aria-label="Close trailer">×</button></div>
+    <div class="trailer-frame"><iframe id="trailerFrame" src="" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="trailer-fallback">If the video won't play here, <a id="trailerYtLink" href="#" target="_blank" rel="noopener">watch it on YouTube ↗</a></div>
+  </div>
+</div>
 <script>
 const data = {
 trending: [
@@ -494,6 +512,7 @@ function makeCard(item,index){
  const link=document.createElement("a");link.className="play";link.style.cursor="pointer";link.target="_blank";link.rel="noopener noreferrer";
  link.href="https://wa.me/923281990008?text="+encodeURIComponent("Hi FILEX TV, I want to get access to "+title+". Please share the subscription details.");
  link.innerHTML="<span>✆</span> Give Access";poster.appendChild(link);
+ if(isYouTubeId(path)){const tb=document.createElement("button");tb.className="trailer-btn";tb.type="button";tb.innerHTML="▶";tb.title="Watch Trailer";tb.setAttribute("aria-label","Watch trailer for "+title);tb.addEventListener("click",function(ev){ev.stopPropagation();openTrailer(path,title);});poster.appendChild(tb);}
  const h=document.createElement("h3");h.textContent=title;
  const meta=document.createElement("p");meta.className="meta";meta.textContent=year;
  const tags=document.createElement("div");tags.className="tags";genre.split(" · ").forEach(g=>{const s=document.createElement("span");s.textContent=g;tags.appendChild(s)});
@@ -552,7 +571,8 @@ function renderTmdbResults(items){
     const heading=document.createElement("h3");heading.textContent=title;
     const meta=document.createElement("p");meta.className="tmdb-meta";meta.textContent=type+(year?" · "+year:"");
     const link=document.createElement("a");link.className="tmdb-access";link.target="_blank";link.rel="noopener noreferrer";link.href=tmdbWhatsApp(title,type,year);link.textContent="Give Access";
-    info.append(heading,meta,link);card.append(img,info);tmdbResults.append(card);
+    const tlink=document.createElement("a");tlink.className="tmdb-trailer";tlink.target="_blank";tlink.rel="noopener noreferrer";tlink.href=trailerUrl(title);tlink.textContent="▶ Trailer";
+    info.append(heading,meta,link,tlink);card.append(img,info);tmdbResults.append(card);
   });
   tmdbStatus.textContent=valid.length+" matching poster(s) found. Select Give Access to contact FILEX TV.";
 }
@@ -665,6 +685,26 @@ tmdbForm.addEventListener("submit", async (event)=>{
     });
   });
 })();
+
+
+/* ================= TRAILER PLAYER ================= */
+function openTrailer(videoId,title){
+  var modal=document.getElementById('trailerModal');
+  document.getElementById('trailerTitle').textContent=title+' — Trailer';
+  document.getElementById('trailerYtLink').href='https://www.youtube.com/watch?v='+videoId;
+  document.getElementById('trailerFrame').src='https://www.youtube.com/embed/'+videoId+'?autoplay=1&rel=0';
+  modal.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeTrailer(){
+  var modal=document.getElementById('trailerModal');
+  document.getElementById('trailerFrame').src='';
+  modal.style.display='none';
+  document.body.style.overflow='';
+}
+document.getElementById('trailerClose').addEventListener('click',closeTrailer);
+document.getElementById('trailerModal').addEventListener('click',function(e){if(e.target===this)closeTrailer();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTrailer();});
 
 </script>
 </body></html>
