@@ -96,7 +96,10 @@ body.light .view{color:var(--blue)}
 .play{position:absolute;right:8px;bottom:8px;z-index:3;display:inline-flex;align-items:center;gap:5px;padding:7px 11px;border:1px solid rgba(139,255,183,.9);border-radius:999px;color:#fff;text-decoration:none;font-size:11px;font-weight:800;background:rgba(8,125,73,.92);backdrop-filter:blur(6px);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
 .card:hover .play{opacity:1;transform:none}
 @media(hover:none){.play{opacity:1;transform:none}}
-.card-actions{display:none}
+.card-actions{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.card-actions .m-trailer,.card-actions .m-access{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:7px 4px;border-radius:999px;font-size:10px;font-weight:800;text-decoration:none;cursor:pointer;font-family:inherit;white-space:nowrap}
+.card-actions .m-trailer{border:1px solid rgba(43,127,255,.7);background:rgba(2,8,24,.9);color:#fff}
+.card-actions .m-access{border:1px solid rgba(139,255,183,.9);background:rgba(8,125,73,.92);color:#fff}
 .card h3{font-size:13px;line-height:1.35;margin:10px 2px 3px;font-weight:700;color:var(--text)}
 .meta{font-size:11px;color:var(--muted);margin:0 2px 7px}
 .tags{display:flex;gap:5px;flex-wrap:wrap}
@@ -107,7 +110,7 @@ body.light .tags span{color:#3d4c74;background:#e8edf8}
 .note{color:var(--muted);font-size:12px;line-height:1.6;margin-top:35px;border-top:1px solid var(--line);padding-top:18px}
 footer{border-top:1px solid var(--line);padding:25px 4vw;color:var(--muted);font-size:12px;text-align:center}
 @media(max-width:1100px){.cards{grid-template-columns:repeat(5,minmax(0,1fr))}.nav{gap:16px}nav{gap:14px}}
-@media(max-width:700px){.nav{flex-wrap:wrap;justify-content:space-between;padding:13px 4vw}.nav-actions{margin-left:auto}nav{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;padding:5px 0 2px}nav a{white-space:nowrap}.hero{padding-top:35px;min-height:300px}.hero-inner{padding:20px 4px}.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.section{margin:22px 0 32px}.poster .play,.poster .trailer-btn{display:none}.card-actions{display:flex;flex-direction:column;gap:6px;margin-top:8px}.card-actions .m-trailer,.card-actions .m-access{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:7px 4px;border-radius:999px;font-size:10px;font-weight:800;text-decoration:none;cursor:pointer;font-family:inherit;white-space:nowrap}.card-actions .m-trailer{border:1px solid rgba(43,127,255,.7);background:rgba(2,8,24,.9);color:#fff}.card-actions .m-access{border:1px solid rgba(139,255,183,.9);background:rgba(8,125,73,.92);color:#fff}.quick{gap:6px}.quick span{font-size:10px;padding:7px 9px}.poster-wall{opacity:.2}}
+@media(max-width:700px){.nav{flex-wrap:wrap;justify-content:space-between;padding:13px 4vw}.nav-actions{margin-left:auto}nav{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;padding:5px 0 2px}nav a{white-space:nowrap}.hero{padding-top:35px;min-height:300px}.hero-inner{padding:20px 4px}.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.section{margin:22px 0 32px}.quick{gap:6px}.quick span{font-size:10px;padding:7px 9px}.poster-wall{opacity:.2}}
 @media(max-width:390px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.logo{font-size:22px}.pill{padding:8px 11px}.pill.whatsapp-pill{font-size:11px;padding:8px 10px;gap:5px}.wa-icon{width:18px;height:18px}.hero-search button[type=submit]{padding:11px 14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 
@@ -643,10 +646,6 @@ function makeCard(item,index){
  // Posters are display-only; customers request access through WhatsApp.
  poster.style.cursor="default";
  poster.removeAttribute("role");poster.removeAttribute("tabindex");poster.removeAttribute("aria-label");
- const link=document.createElement("a");link.className="play";link.style.cursor="pointer";link.target="_blank";link.rel="noopener noreferrer";
- link.href="https://wa.me/923281990008?text="+encodeURIComponent("Hi FILEX TV, I want to get access to "+title+". Please share the subscription details.");
- link.innerHTML="<span>✆</span> Give Access";poster.appendChild(link);
- if(isYouTubeId(path)){const tb=document.createElement("button");tb.className="trailer-btn";tb.type="button";tb.innerHTML="▶ Watch Trailer";tb.title="Watch Trailer";tb.setAttribute("aria-label","Watch trailer for "+title);tb.addEventListener("click",function(ev){ev.stopPropagation();openTrailer(path,title);});poster.appendChild(tb);}
  const h=document.createElement("h3");h.textContent=title;
  const meta=document.createElement("p");meta.className="meta";meta.textContent=year;
  const tags=document.createElement("div");tags.className="tags";genre.split(" · ").forEach(g=>{const s=document.createElement("span");s.textContent=g;tags.appendChild(s)});
