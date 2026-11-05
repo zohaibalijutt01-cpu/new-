@@ -143,6 +143,21 @@ body.light .offer p{color:var(--muted)}
 body.light .payment .account{color:var(--text)}
 .payment .account strong{display:block;font-size:17px;margin-top:3px}
 .section[id="plans"],.section[id="devices"],.section[id="install"]{scroll-margin-top:100px}
+.section[id="live-tv"]{scroll-margin-top:100px}
+.live-sub{color:var(--muted);font-size:14px;margin:-6px 0 18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.chip.active{background:linear-gradient(110deg,#1e6ff2,#2b7fff);border-color:transparent;color:#fff}
+.ch-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.ch-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;text-decoration:none;transition:transform .2s,border-color .2s;display:block}
+.ch-card:hover{transform:translateY(-4px);border-color:rgba(43,127,255,.6)}
+.ch-logo{background:#fff;border-radius:10px;height:64px;display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden}
+.ch-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.ch-name{margin:9px 0 0;font-size:12px;font-weight:700;color:var(--text);line-height:1.35;min-height:32px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ch-tag{font-size:11px;color:var(--muted)}
+.live-more{text-align:center;margin-top:22px}
+@media(max-width:1000px){.ch-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:650px){.ch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.ch-logo{height:56px}}
 @media(max-width:1000px){.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.device-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.plan{padding:18px 13px}.plan .price{font-size:29px}.device-grid{grid-template-columns:1fr}.offer{padding:20px}.payment{align-items:flex-start}}
 .feat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -304,7 +319,7 @@ body.light .cmsg.bot{background:#e8edf8}
 <div class="top-offer"><span class="spark">✦</span> SPECIAL OFFER: 6 MONTHS — PKR 1,200 <span class="top-save">SAVE WITH A 6-MONTH PLAN</span> <a href="https://wa.me/923281990008?text=Hi%20FILEX%20TV%2C%20I%27m%20interested%20in%20the%206-month%20plan%20for%20PKR%201200.%20Please%20share%20details.">GET OFFER ↗</a></div>
 <header><div class="nav">
   <a class="logo" href="#home"><span class="tri">▶</span> FILEX <i>TV</i></a>
-  <nav><a href="index.html" class="active">Home</a><a href="category.html?cat=movies">Movies</a><a href="category.html?cat=series">Series</a><a href="#plans">Live TV</a><a href="category.html?cat=family">Kids</a><a href="category.html?cat=trending">Sports</a></nav>
+  <nav><a href="index.html" class="active">Home</a><a href="category.html?cat=movies">Movies</a><a href="category.html?cat=series">Series</a><a href="#live-tv">Live TV</a><a href="category.html?cat=family">Kids</a><a href="category.html?cat=trending">Sports</a></nav>
   <div class="nav-actions"><div class="nav-icons"><button class="icon-btn" id="themeToggle" aria-label="Toggle light or dark theme">🌙</button><button class="icon-btn" id="navSearchBtn" aria-label="Search">🔍</button><div class="bell-wrap"><button class="icon-btn" id="bellBtn" aria-label="Notifications">🔔</button><div class="bell-drop" id="bellDrop"><b>Notifications</b><p>No new notifications. New movies and series are added regularly — check the Trending section for the latest.</p></div></div></div><button class="login-btn" id="loginBtn">👤 Login</button><a class="pill whatsapp-pill" href="https://wa.me/923281990008?text=Hi%20FILEX%20TV%2C%20I%27d%20like%20to%20purchase%20a%20subscription.%20Please%20share%20the%20plans." target="_blank" rel="noopener" aria-label="Purchase FILEX TV on WhatsApp"><span class="wa-icon" aria-hidden="true">✆</span> Buy on WhatsApp</a></div>
 </div></header>
 <section class="hero" id="home"><div class="poster-wall" id="posterWall" aria-hidden="true"></div><div class="fx-orb orb-a"></div><div class="fx-orb orb-b"></div><div class="hero-inner">
@@ -347,6 +362,14 @@ body.light .cmsg.bot{background:#e8edf8}
       <article class="feat-card"><span class="fnum">05</span><div class="fic">🌍</div><h3>20,000+ World Channels</h3><p>USA, UK, Canada, Arabic, Indian, Pakistani, Turkish, French and many more lineups.</p></article>
       <article class="feat-card"><span class="fnum">06</span><div class="fic">🎁</div><h3>Free 24-Hour Trial</h3><p>Try everything free for 24 hours before you pay a single rupee. No credit card needed.</p></article>
     </div>
+  </section>
+
+  <section class="section" id="live-tv">
+    <div class="section-head"><h2>📺 Live TV <span>Channels</span></h2><a class="view" href="livetv.html">View All ›</a></div>
+    <p class="live-sub">500+ popular channels — sports, cricket, news, movies, kids &amp; more. Tap any channel to order on WhatsApp.</p>
+    <div class="chips" id="liveChips"></div>
+    <div class="ch-grid" id="liveGrid"></div>
+    <div class="live-more"><a class="cta" href="livetv.html">Browse All Channels →</a></div>
   </section>
 
   <section class="section" id="plans">
@@ -460,6 +483,7 @@ body.light .cmsg.bot{background:#e8edf8}
     <div class="trailer-fallback">If the video won't play here, <a id="trailerYtLink" href="#" target="_blank" rel="noopener">watch it on YouTube ↗</a></div>
   </div>
 </div>
+<script src="channels.js"></script>
 <script>
 const data = {
 trending: [
@@ -864,6 +888,37 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTrailer
       a.classList.add('active');
     });
   });
+/* ================= LIVE TV CHANNELS ================= */
+(function(){
+  var grid=document.getElementById('liveGrid'),chipsBox=document.getElementById('liveChips');
+  if(!grid||!chipsBox||typeof LIVE_CHANNELS==='undefined')return;
+  var GROUPS=['All','Cricket','Sports','Pakistan','India','UK','USA','Arab','News','Entertainment','Movies','Kids','Music','Documentary'];
+  var cur='All';
+  function waLink(name){return 'https://wa.me/923281990008?text='+encodeURIComponent('Hi FILEX TV, I want to watch '+name+'. Please send me the subscription details.');}
+  function card(c){
+    var a=document.createElement('a');a.className='ch-card';a.href=waLink(c.n);a.target='_blank';a.rel='noopener';
+    var logo=document.createElement('div');logo.className='ch-logo';
+    var img=document.createElement('img');img.alt=c.n;img.loading='lazy';
+    img.src=c.f?('img/channels/'+c.f):c.i;
+    img.onerror=function(){if(this.src!==c.i){this.onerror=null;this.src=c.i;}else{this.style.display='none';}};
+    logo.appendChild(img);a.appendChild(logo);
+    var nm=document.createElement('p');nm.className='ch-name';nm.textContent=c.n;a.appendChild(nm);
+    var tg=document.createElement('span');tg.className='ch-tag';tg.textContent=c.g;a.appendChild(tg);
+    return a;
+  }
+  function render(){
+    var list=cur==='All'?LIVE_CHANNELS:LIVE_CHANNELS.filter(function(c){return c.g===cur;});
+    grid.replaceChildren();
+    list.slice(0,24).forEach(function(c){grid.appendChild(card(c));});
+  }
+  GROUPS.forEach(function(g){
+    var b=document.createElement('button');b.type='button';b.className='chip'+(g===cur?' active':'');b.textContent=g;
+    b.addEventListener('click',function(){cur=g;chipsBox.querySelectorAll('.chip').forEach(function(x){x.classList.remove('active');});b.classList.add('active');render();});
+    chipsBox.appendChild(b);
+  });
+  render();
+})();
+
 })();
 
 </script>
