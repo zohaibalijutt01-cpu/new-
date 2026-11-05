@@ -304,7 +304,7 @@ body.light .cmsg.bot{background:#e8edf8}
 <div class="top-offer"><span class="spark">✦</span> SPECIAL OFFER: 6 MONTHS — PKR 1,200 <span class="top-save">SAVE WITH A 6-MONTH PLAN</span> <a href="https://wa.me/923281990008?text=Hi%20FILEX%20TV%2C%20I%27m%20interested%20in%20the%206-month%20plan%20for%20PKR%201200.%20Please%20share%20details.">GET OFFER ↗</a></div>
 <header><div class="nav">
   <a class="logo" href="#home"><span class="tri">▶</span> FILEX <i>TV</i></a>
-  <nav><a href="#home" class="active">Home</a><a href="#movies">Movies</a><a href="#series">Series</a><a href="#plans">Live TV</a><a href="#family">Kids</a><a href="#trending">Sports</a></nav>
+  <nav><a href="index.html" class="active">Home</a><a href="category.html?cat=movies">Movies</a><a href="category.html?cat=series">Series</a><a href="#plans">Live TV</a><a href="category.html?cat=family">Kids</a><a href="category.html?cat=trending">Sports</a></nav>
   <div class="nav-actions"><div class="nav-icons"><button class="icon-btn" id="themeToggle" aria-label="Toggle light or dark theme">🌙</button><button class="icon-btn" id="navSearchBtn" aria-label="Search">🔍</button><div class="bell-wrap"><button class="icon-btn" id="bellBtn" aria-label="Notifications">🔔</button><div class="bell-drop" id="bellDrop"><b>Notifications</b><p>No new notifications. New movies and series are added regularly — check the Trending section for the latest.</p></div></div></div><button class="login-btn" id="loginBtn">👤 Login</button><a class="pill whatsapp-pill" href="https://wa.me/923281990008?text=Hi%20FILEX%20TV%2C%20I%27d%20like%20to%20purchase%20a%20subscription.%20Please%20share%20the%20plans." target="_blank" rel="noopener" aria-label="Purchase FILEX TV on WhatsApp"><span class="wa-icon" aria-hidden="true">✆</span> Buy on WhatsApp</a></div>
 </div></header>
 <section class="hero" id="home"><div class="poster-wall" id="posterWall" aria-hidden="true"></div><div class="fx-orb orb-a"></div><div class="fx-orb orb-b"></div><div class="hero-inner">
@@ -330,11 +330,11 @@ body.light .cmsg.bot{background:#e8edf8}
  <div class="trial-price"><div><strong>24 HRS</strong><span>FREE TRIAL</span></div></div>
 </section>
 <main>
-  <section class="section" id="trending"><div class="section-head"><h2>🔥 <span>Trending</span> Now</h2><a class="view" href="#trending">View All ›</a></div><div class="cards" id="trendingCards"></div></section>
-  <section class="section" id="movies"><div class="section-head"><h2>🎬 Latest <span>Movies</span></h2><a class="view" href="#movies">View All ›</a></div><div class="cards" id="movieCards"></div></section>
-  <section class="section" id="series"><div class="section-head"><h2>📺 Popular <span>Series</span></h2><a class="view" href="#series">View All ›</a></div><div class="cards" id="seriesCards"></div></section>
-  <section class="section" id="anime"><div class="section-head"><h2>⚡ Anime & <span>Animation</span></h2><a class="view" href="#anime">View All ›</a></div><div class="cards" id="animeCards"></div></section>
-  <section class="section" id="family"><div class="section-head"><h2>🌟 Family <span>Favourites</span></h2><a class="view" href="#family">View All ›</a></div><div class="cards" id="familyCards"></div></section>
+  <section class="section" id="trending"><div class="section-head"><h2>🔥 <span>Trending</span> Now</h2><a class="view" href="category.html?cat=trending">View All ›</a></div><div class="cards" id="trendingCards"></div></section>
+  <section class="section" id="movies"><div class="section-head"><h2>🎬 Latest <span>Movies</span></h2><a class="view" href="category.html?cat=movies">View All ›</a></div><div class="cards" id="movieCards"></div></section>
+  <section class="section" id="series"><div class="section-head"><h2>📺 Popular <span>Series</span></h2><a class="view" href="category.html?cat=series">View All ›</a></div><div class="cards" id="seriesCards"></div></section>
+  <section class="section" id="anime"><div class="section-head"><h2>⚡ Anime & <span>Animation</span></h2><a class="view" href="category.html?cat=anime">View All ›</a></div><div class="cards" id="animeCards"></div></section>
+  <section class="section" id="family"><div class="section-head"><h2>🌟 Family <span>Favourites</span></h2><a class="view" href="category.html?cat=family">View All ›</a></div><div class="cards" id="familyCards"></div></section>
 
 
   <section class="section" id="features">
@@ -628,7 +628,7 @@ function makeCard(item,index){
  card.append(poster,h,meta,tags);return card;
 }
 const targets={trending:"trendingCards",movies:"movieCards",series:"seriesCards",anime:"animeCards",family:"familyCards"};
-for(const [key,id] of Object.entries(targets)){const root=document.getElementById(id);data[key].forEach((item,i)=>root.appendChild(makeCard(item,i)));}
+for(const [key,id] of Object.entries(targets)){const root=document.getElementById(id);data[key].slice(0,9).forEach((item,i)=>root.appendChild(makeCard(item,i)));}
 
 // Build a static, dim poster collage behind only the top hero area.
 (function buildPosterWall(){
